@@ -1,0 +1,35 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.202.203.55:8848
+  application:
+    name: service-user
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.202.203.57:5306/shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: qt13579
+
+jpa:
+  properties:
+   hibernate:
+    hbm2ddl:
+      auto: update
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#rocketmq:
+#  name-server: 39.97.165.29:9876
+security:
+  oauth2:
+    client:
+      id: pc
+      client-secret: 123456
+      access-token-uri: http://localhost:8091/oauth/token
+      grant-type: password
+      scope: all
+    resource:
+      jwt:
+        key-uri: http://localhost:8091/oauth/token_key
+

@@ -1,0 +1,28 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.202.203.55:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 让gateway可以发现nacos中的微服务
+      routes:
+        - id: product_route
+          uri: lb://service-product # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/product/**
+          filters:
+            - StripPrefix=1
+        - id: oauth_route
+          uri: lb://service-oauth
+          predicates:
+            - Path=/oauth/**
+        - id: order_route
+          uri: lb://service-order
+          predicates:
+            - Path=/order/**

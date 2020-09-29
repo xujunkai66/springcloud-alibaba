@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: service-product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.202.203.57:5306/shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: qt13579
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.202.203.55:8848
+jpa:
+  properties:
+    hibernate:
+      hbm2ddl:
+        auto: update
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
