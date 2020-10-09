@@ -12,11 +12,19 @@ spring:
     nacos:
       discovery:
         server-addr: 10.202.203.55:8848
+  zipkin:
+    base-url: http://10.202.203.55:9411 #zipkin server的请求地址
+    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样的百分比
 jpa:
   properties:
     hibernate:
       hbm2ddl:
         auto: update
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
 
 
